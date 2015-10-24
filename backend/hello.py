@@ -3,6 +3,7 @@ import json
 import calendar
 import time
 import random 
+import numpy
 from firebase import firebase
 
 
@@ -12,9 +13,6 @@ def putAppleWatch(firebase):
     a = calendar.timegm(time.gmtime())
     b = random.randint(80,100)
     data = {str(a):str(b)}
-    data2 = {'a':'b'}
-    print(data)
-    print(data2)
     #result = firebase.post('/watch',a,{'print':'pretty'},{'X_FANCY_HEADER': 'VERY FANCY'})
     result = firebase.post('/watch',data)
     #result = firebase.post('/watch',a)
@@ -22,9 +20,31 @@ def putAppleWatch(firebase):
 
 def getFromAppleWatch(firebase):
     result = firebase.get('/watch',None)
-    a=(json.dumps(result))
+    #a=(json.dump(result))
+    a = result
     print(a)
+    timeList = []
+    hrList = []
+    #print(a.itervalues().next())
+    for value in a.iteritems():
+        second=(value[1])
+        time = str(second.keys())
+        lenTime = len(time)
+        time = time[3:lenTime-2]
+        time = int(time)
+        timeList.append(time)
+        hr = str(second.values())
+        hrLen  = len(hr)
+        hr = hr[3:hrLen-2]
+        hr = int(hr)
+        hrList.append(hr)
     
+    elapsedTime = max(timeList) - min(timeList)
+    maxhr = max(hrList)
+    print(elapsedTime)
+    print(maxhr)
+
+
 
 def processAppleWatch():
     print('ayy')
@@ -32,7 +52,10 @@ def processAppleWatch():
 def putToFirebase():
     print('lmao')
 
-for i in range (0,60):
-    time.sleep(1)
-    putAppleWatch(firebase)
-#getFromAppleWatch(firebase)
+def startHeartRateGen():
+    for i in range (0,5):
+        time.sleep(1)
+        putAppleWatch(firebase)
+
+startHeartRateGen()
+getFromAppleWatch(firebase)
