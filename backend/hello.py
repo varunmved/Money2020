@@ -40,6 +40,7 @@ def getFromAppleWatch(firebase):
         hrList.append(hr)
     
     elapsedTime = max(timeList) - min(timeList)
+    avghr = numpy.average(hrList)
     maxhr = max(hrList)
     print(elapsedTime)
     print(maxhr)
