@@ -4,12 +4,13 @@ import json
 import calendar
 import time
 import random 
-import numpy
+import numpy as np
 import fitbit
 import names
 from firebase import firebase
+requests.packages.urllib3.disable_warnings()
 
-
+beaconList = []
 firebase = firebase.FirebaseApplication('https://baemoney2020.firebaseio.com', None)
 def createBeacon():
     beaconStr = 'beacon' + str(random.randint(0,10))
@@ -51,7 +52,7 @@ def getFromAppleWatch(beacon,user):
         hrList.append(hr)
     
     elapsedTime = max(timeList) - min(timeList)
-    avghr = numpy.average(hrList)
+    avghr = np.average(hrList)
     maxhr = max(hrList)
     print(elapsedTime)
     print(maxhr)
@@ -64,13 +65,30 @@ def putBeacon():
     
 
 def startHeartRateGen():
-    for i in range (0,25):
+    for i in range (0,10):
         beacon = createBeacon()
-        for k in range (0,25):
+        beaconList.append(beacon)
+        for k in range (0,5):
             name = createName()
-            for j in range (0,25):
+            for j in range (0,5):
                 putAppleWatch(beacon,name)
             getFromAppleWatch(beacon,name)
-startHeartRateGen()
-#getFromAppleWatch()
+
+def analyzeBeacons(): 
+    for i in range(0,10):
+        beaconStr = '/beacon' +str(i) 
+        result = firebase.get(beaconStr,None)
+        print(result.keys())
+        print(result.values())
+        print(i)
+        #keys = np.fromiter(iter(result.keys()), dtype=float)
+        #vals = np.fromiter(iter(result.values()), dtype=float)
+        
+    #print(len(l)) 
+    #for j in (0,len(l)):
+    #(l[0])
+#startHeartRateGen()
+
+analyzeBeacons()
+
 putBeacon()
