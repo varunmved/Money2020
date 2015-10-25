@@ -19,7 +19,7 @@ def putAppleWatch(firebase):
     #result = firebase.post('/watch',a)
     
 
-def getFromAppleWatch(firebase):
+def getFromAppleWatch():
     result = firebase.get('/watch',None)
     #a=(json.dump(result))
     a = result
@@ -47,17 +47,13 @@ def getFromAppleWatch(firebase):
     print(maxhr)
 
 
-
-def processAppleWatch():
-    print('ayy')
-
-def putToFirebase():
-    print('lmao')
+def putBeacon():
+    
 
 def startHeartRateGen():
     for i in range (0,5):
         time.sleep(1)
-        putAppleWatch(firebase)
+        putAppleWatch()
 
-#startHeartRateGen()
-#getFromAppleWatch(firebase)
+startHeartRateGen()
+getFromAppleWatch()
