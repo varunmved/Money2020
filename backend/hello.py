@@ -1,3 +1,4 @@
+import string
 import requests
 import json
 import calendar
@@ -5,22 +6,31 @@ import time
 import random 
 import numpy
 import fitbit
+import names
 from firebase import firebase
 
 
 firebase = firebase.FirebaseApplication('https://baemoney2020.firebaseio.com', None)
+def createBeacon():
+    beaconStr = 'beacon' + str(random.randint(0,10))
+    return beaconStr
 
-def putAppleWatch(firebase):
+def createName():
+    user = str(names.get_full_name())
+    user.replace(" ", "_")
+    return user
+
+def putAppleWatch(beacon,user):
+    userPostStr = '/'+ beacon + '/' + user
     a = calendar.timegm(time.gmtime())
     b = random.randint(80,100)
     data = {str(a):str(b)}
-    #result = firebase.post('/watch',a,{'print':'pretty'},{'X_FANCY_HEADER': 'VERY FANCY'})
-    result = firebase.post('/watch',data)
-    #result = firebase.post('/watch',a)
+    result = firebase.post(userPostStr,data)
     
 
-def getFromAppleWatch():
-    result = firebase.get('/watch',None)
+def getFromAppleWatch(beacon,user):
+    userPostStr = '/' + beacon + '/' + user
+    result = firebase.get(userPostStr,None)
     #a=(json.dump(result))
     a = result
     print(a)
@@ -45,15 +55,22 @@ def getFromAppleWatch():
     maxhr = max(hrList)
     print(elapsedTime)
     print(maxhr)
-
+    print(avghr)
 
 def putBeacon():
+    N = 10
+    #beaconId = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
+    #result = firebase.post('/beacon',beaconId)
     
 
 def startHeartRateGen():
-    for i in range (0,5):
-        time.sleep(1)
-        putAppleWatch()
-
+    for i in range (0,25):
+        beacon = createBeacon()
+        for k in range (0,25):
+            name = createName()
+            for j in range (0,25):
+                putAppleWatch(beacon,name)
+            getFromAppleWatch(beacon,name)
 startHeartRateGen()
-getFromAppleWatch()
+#getFromAppleWatch()
+putBeacon()
