@@ -7,7 +7,10 @@ import random
 import numpy as np
 import fitbit
 import names
+import plotly.plotly as py
+import plotly.graph_objs as go
 from firebase import firebase
+
 requests.packages.urllib3.disable_warnings()
 
 beaconList = []
@@ -27,7 +30,9 @@ def putAppleWatch(beacon,user):
     b = random.randint(80,100)
     data = {str(a):str(b)}
     result = firebase.post(userPostStr,data)
-    
+    x = []
+    y = []
+    trace = go.Scatter(x.append(int(a)), y.append(b), mode = 'lines+markers')      
 
 def getFromAppleWatch(beacon,user):
     userPostStr = '/' + beacon + '/' + user
@@ -75,18 +80,22 @@ def startHeartRateGen():
             getFromAppleWatch(beacon,name)
 
 def analyzeBeacons(): 
-    for i in range(0,10):
+    for i in range(0,11):
         beaconStr = '/beacon' +str(i) 
         result = firebase.get(beaconStr,None)
-        print(result.keys())
-        print(result.values())
-        print(i)
+        #print(result.keys())
+        print(str(result.values()))
+        #print(i)
         #keys = np.fromiter(iter(result.keys()), dtype=float)
         #vals = np.fromiter(iter(result.values()), dtype=float)
-        
     #print(len(l)) 
     #for j in (0,len(l)):
     #(l[0])
+
+
+
+
+
 #startHeartRateGen()
 
 analyzeBeacons()
