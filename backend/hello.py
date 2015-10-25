@@ -4,6 +4,7 @@ import calendar
 import time
 import random 
 import numpy
+import fitbit
 from firebase import firebase
 
 
@@ -58,5 +59,5 @@ def startHeartRateGen():
         time.sleep(1)
         putAppleWatch(firebase)
 
-startHeartRateGen()
-getFromAppleWatch(firebase)
+#startHeartRateGen()
+#getFromAppleWatch(firebase)

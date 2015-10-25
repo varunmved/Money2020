@@ -1,0 +1,19 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+# use_frameworks!
+
+target 'bae1' do
+pod 'Firebase', '>= 2.4.2'
+
+end
+
+target 'bae1 WatchKit App' do
+pod 'Firebase', '>= 2.4.2'
+end
+
+target 'bae1 WatchKit Extension' do
+pod 'Firebase', '>= 2.4.2'
+
+end
+

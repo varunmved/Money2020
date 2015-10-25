@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1F1639150CD8FEFE6433320C00AC1D0F695D6DAD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AF9CC3B44150E7F595C8584C54B243A89095D32E" : 0,
+    "1F1639150CD8FEFE6433320C00AC1D0F695D6DAD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CD179D6E-4691-4482-ACAF-28A229C917CB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AF9CC3B44150E7F595C8584C54B243A89095D32E" : "",
+    "1F1639150CD8FEFE6433320C00AC1D0F695D6DAD" : "bae\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "bae1",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "bae1\/bae1.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/varunmved\/Money2020.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1F1639150CD8FEFE6433320C00AC1D0F695D6DAD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/varunmved\/calhacks2015p2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AF9CC3B44150E7F595C8584C54B243A89095D32E"
+    }
+  ]
+}
