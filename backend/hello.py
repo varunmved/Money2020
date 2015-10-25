@@ -7,14 +7,23 @@ import random
 import numpy as np
 import fitbit
 import names
+import base64
 import plotly.plotly as py
 import plotly.graph_objs as go
+import securenet as securenet
 from firebase import firebase
-
 requests.packages.urllib3.disable_warnings()
 
 beaconList = []
+
 firebase = firebase.FirebaseApplication('https://baemoney2020.firebaseio.com', None)
+
+def encodesSecurenet(securenetID,securenetPass):
+    a = base64.encodestring(securenetID + ':' + securenetPass)
+    out = 'Basic ' + a 
+    url = 'https://gwapi.demo.securenet.com/api/Payments/Charge'
+    r = requests.get(url,headers=out)
+
 def createBeacon():
     beaconStr = 'beacon' + str(random.randint(0,10))
     return beaconStr
@@ -92,12 +101,36 @@ def analyzeBeacons():
     #for j in (0,len(l)):
     #(l[0])
 
-
-
-
+def securenetProcess():
+    securenet.authorize({
+    "amount": 11.00,
+    "card": {
+    "number": "4444 3333 2222 1111",
+    "cvv": "999",
+    "expiration_date": "04/2016",
+    "address": {
+    "line1": "123 Main St.",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78759"
+    },
+    "first_name": "Jack",
+    "last_name": "Test"
+    },
+    "extended_information": {
+    "type_of_goods": "PHYSICAL"
+    } , 
+    "developerApplication": {
+        "developerId": 12345678,
+        "version": "1.2"
+      }
+    })
 
 #startHeartRateGen()
-
-analyzeBeacons()
-
-putBeacon()
+#analyzeBeacons()
+#putBeacon()
+#securenetProcess()
+securenetID = '8005236'
+securenetPass = 'Yn4ma5uS7nww'
+#encodesSecurenet(securenetID,securenetPass)
+securenetProcess()
