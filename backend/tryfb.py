@@ -1,11 +1,5 @@
 import fitbit
-consumer_key = 'b785ae87e873133f0baff9bb21dc66ab'
-consumer_secret = '28a8fce8b61ac758b1111f1690de151d'
-encoded_user_id = '3RVPY5'
-#oauth_token = 'adce2ce343bcb360176e233d62a13bee'
-#oauth_token_secret = '9983d76c740c6b8d6d4a15d8187984fc'
-user_key = 'adce2ce343bcb360176e233d62a13bee'
-user_secret = '9983d76c740c6b8d6d4a15d8187984fc'
+#I NEED TO STOP PUTTING KEYS IN PLAINTEXT
 
 '''
 z = fitbit.Fitbit()
